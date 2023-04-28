@@ -17,8 +17,10 @@ public interface BoardMapper {
 				inserted
 			FROM Board
 			ORDER BY id DESC
+			LIMIT
+			#{startIndex}, #{num}
 			""")
-	List<Board> selectAll();
+	List<Board> selectPage(Integer startIndex, Integer num);
 
 	@Select("""
 			SELECT *
@@ -50,6 +52,11 @@ public interface BoardMapper {
 			""")
 	@Options(useGeneratedKeys = true, keyProperty = "id")
 	int insert(Board board);
+
+	@Select("""
+			SELECT COUNT(*) FROM Board
+			""")
+	Integer size();
 
 	
 }

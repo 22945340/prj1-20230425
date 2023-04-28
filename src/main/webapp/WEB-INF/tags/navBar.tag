@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<nav class="navbar navbar-expand-lg bg-dark mb-3 " data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-dark mb-3 " data-bs-theme="dark" >
 	<div class="container-lg">
-		<a class="navbar-brand" href="#">중앙게시판</a>
+		<a class="navbar-brand" href="#"><img src="Netflix.png" width="100px" height="56px" alt="" /></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
