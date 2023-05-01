@@ -10,18 +10,47 @@ import com.example.demo.domain.*;
 public interface BoardMapper {
 
 	@Select("""
+			<script>
+			<bind name="pattern" value="'%' + search + '%'" />
 			SELECT
 				id,
 				title,
 				writer,
 				inserted
-			FROM Board
-			ORDER BY id DESC
+			FROM 
+				Board
+				
+			<choose>
+			
+			<when test="searchOption == 'writerTitle'">
+			WHERE
+				title LIKE #{pattern}
+				OR
+				writer LIKE #{pattern}
+			</when>
+				
+			<when test="searchOption == 'title'">
+			WHERE
+				title LIKE #{pattern}
+			</when>
+			
+			<when test="searchOption == 'writer'">
+			WHERE
+				writer LIKE #{pattern}	
+			</when>
+			
+			</choose>
+			
+			ORDER BY 
+				id DESC
 			LIMIT
 			#{startIndex}, #{num}
+			</script>
 			""")
-	List<Board> selectPage(Integer startIndex, Integer num);
+	List<Board> selectPage(Integer startIndex, Integer num, String search, String searchOption);
 
+	
+	
 	@Select("""
 			SELECT *
 			FROM Board
@@ -54,9 +83,32 @@ public interface BoardMapper {
 	int insert(Board board);
 
 	@Select("""
+			<script>
+			<bind name="pattern" value="'%' + search + '%'" />
 			SELECT COUNT(*) FROM Board
+			
+			<choose>
+				<when test="searchOption == 'writerTitle'">
+				WHERE
+					title LIKE #{pattern}
+					OR
+					writer LIKE #{pattern}
+				</when>
+					
+				<when test="searchOption == 'title'">
+				WHERE
+					title LIKE #{pattern}
+				</when>
+				
+				<when test="searchOption == 'writer'">
+				WHERE
+					writer LIKE #{pattern}	
+				</when>
+				
+			</choose>
+			</script>
 			""")
-	Integer size();
+	Integer size(String search, String searchOption);
 
 	
 }

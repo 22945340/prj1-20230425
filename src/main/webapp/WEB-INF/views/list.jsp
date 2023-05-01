@@ -23,13 +23,23 @@
 
 		<hr />
 		<div style="float: right">
-			<form action="/list" method="get" onchange="location.herf="/list">
-				<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="num">
+			<c:url value="/list" var="pageLink">
+				<c:param name="page" value="${pageInfo.prevPageNumber }"></c:param>
+				<c:param name="num" value="${pageInfo.num}"></c:param>
+				<c:if test="${not empty param.search }">
+					<c:param name="search" value="${param.search }"></c:param>
+				</c:if>
+				<c:if test="${not empty param.searchOption }">
+					<c:param name="searchOption" value="${param.searchOption }"></c:param>
+				</c:if>
+			</c:url>
+
+			<form action="${pageLink }" method="get" name="selectNum">
+				<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="num" onchange="selectNum.submit()">
 					<option value="10" ${pageInfo.num eq 10 ? 'selected' : '' }>10개씩 보기</option>
 					<option value="20" ${pageInfo.num eq 20 ? 'selected' : '' }>20개씩 보기</option>
 					<option value="30" ${pageInfo.num eq 30 ? 'selected' : '' }>30개씩 보기</option>
 				</select>
-				<input type="submit" value="조회" />
 			</form>
 		</div>
 

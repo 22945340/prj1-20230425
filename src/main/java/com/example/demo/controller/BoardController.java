@@ -25,10 +25,12 @@ public class BoardController {
 	@GetMapping({ "/", "list" })
 	public String list(@RequestParam(value = "page", defaultValue = "1") Integer page,
 					@RequestParam(value = "num", defaultValue = "10")  Integer num ,
+					@RequestParam(value = "search", defaultValue = "") String search,
+					String searchOption,
 					Model model) {
 
 		
-		Map<String, Object> result = service.listBoard(page, num);
+		Map<String, Object> result = service.listBoard(page, num, search, searchOption);
 
 //		model.addAttribute("boardList", result.get("boardList"));
 //		model.addAttribute("pageInfo", result.get("pageInfo"));

@@ -11,6 +11,12 @@
 				<c:url value="/list" var="pageLink">
 					<c:param name="page" value="1"></c:param>
 					<c:param name="num" value="${pageInfo.num}"></c:param>
+					<c:if test="${not empty param.search }">
+						<c:param name="search" value="${param.search }"></c:param>
+					</c:if>
+					<c:if test="${not empty param.searchOption }">
+						<c:param name="searchOption" value="${param.searchOption }"></c:param>
+					</c:if>
 				</c:url>
 				<a href="${pageLink }" class="page-link">
 					<i class="fa-solid fa-angles-left"></i>
@@ -22,6 +28,13 @@
 				<c:url value="/list" var="pageLink">
 					<c:param name="page" value="${pageInfo.prevPageNumber }"></c:param>
 					<c:param name="num" value="${pageInfo.num}"></c:param>
+					<c:if test="${not empty param.search }">
+						<c:param name="search" value="${param.search }"></c:param>
+					</c:if>
+					<c:if test="${not empty param.searchOption }">
+						<c:param name="searchOption" value="${param.searchOption }"></c:param>
+					</c:if>
+
 				</c:url>
 				<a href="${pageLink }" class="page-link">
 					<i class="fa-solid fa-angle-left"></i>
@@ -34,6 +47,12 @@
 			<c:url value="/list" var="pageLink">
 				<c:param name="page" value="${pageNumber }"></c:param>
 				<c:param name="num" value="${pageInfo.num}"></c:param>
+				<c:if test="${not empty param.search }">
+					<c:param name="search" value="${param.search }"></c:param>
+				</c:if>
+				<c:if test="${not empty param.searchOption }">
+					<c:param name="searchOption" value="${param.searchOption }"></c:param>
+				</c:if>
 			</c:url>
 			<li class="page-item">
 				<a href="${pageLink }" class="page-link ${pageNumber eq pageInfo.currentPageNumber ? 'active' : '' }">${pageNumber }</a>
@@ -45,6 +64,12 @@
 				<c:url value="/list" var="pageLink">
 					<c:param name="page" value="${pageInfo.nextPageNumber }"></c:param>
 					<c:param name="num" value="${pageInfo.num}"></c:param>
+					<c:if test="${not empty param.search }">
+						<c:param name="search" value="${param.search }"></c:param>
+					</c:if>
+					<c:if test="${not empty param.searchOption }">
+						<c:param name="searchOption" value="${param.searchOption }"></c:param>
+					</c:if>
 				</c:url>
 				<a href="${pageLink }" class="page-link">
 					<i class="fa-solid fa-angle-right"></i>
@@ -59,6 +84,12 @@
 				<c:url value="/list" var="pageLink">
 					<c:param name="page" value="${pageInfo.lastPageNumber }"></c:param>
 					<c:param name="num" value="${pageInfo.num}"></c:param>
+					<c:if test="${not empty param.search }">
+						<c:param name="search" value="${param.search }"></c:param>
+					</c:if>
+					<c:if test="${not empty param.searchOption }">
+						<c:param name="searchOption" value="${param.searchOption }"></c:param>
+					</c:if>
 				</c:url>
 				<a href="${pageLink }" class="page-link">
 					<i class="fa-solid fa-angles-right"></i>

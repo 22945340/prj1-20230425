@@ -14,11 +14,12 @@ public class BoardService {
 	@Autowired
 	private BoardMapper mapper;
 
-	public Map<String, Object> listBoard(Integer page, Integer num) {
+	public Map<String, Object> listBoard(Integer page, Integer num, String search, String searchOption) {
 		Integer startIndex = (page -1) * num;
 		
+		
 		// 데이터 수
-		Integer size = this.size();
+		Integer size = mapper.size(search, searchOption);
 		
 		// 페이지네이션 가장 왼쪽 번호, 오른쪽번호 구하기
 //		Integer leftPageNumber = (page - 1) / 10 * 10 + 1;
@@ -40,6 +41,9 @@ public class BoardService {
 		// 오른쪽 페이지 번호가 마지막 페이지 번호보다 클 수 없음
 		rightPageNumber = Math.min(rightPageNumber, lastPageNumber);
 		
+		
+		List<Board> boardList = mapper.selectPage(startIndex, num, search, searchOption);
+		
 		Map<String, Object> pageInfo = new HashMap<>();
 		
 		pageInfo.put("begin", leftPageNumber);
@@ -50,10 +54,9 @@ public class BoardService {
 		pageInfo.put("currentPageNumber", page);
 		pageInfo.put("num", num);
 		
-		List<Board> boardList = mapper.selectPage(startIndex, num);
 
 		
-		return Map.of("pageInfo", pageInfo, "boardList",boardList);
+		return Map.of("pageInfo", pageInfo, "boardList", boardList);
 	}
 
 	public Board getBoard(Integer id) {
@@ -78,10 +81,6 @@ public class BoardService {
 		return cnt == 1;
 	}
 
-	public Integer size() {
-		
-		return mapper.size(); 
-	}
 }
 
 
