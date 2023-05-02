@@ -5,12 +5,14 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 import org.springframework.web.multipart.*;
 
 import com.example.demo.domain.*;
 import com.example.demo.mapper.*;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class BoardService {
 
 	@Autowired
@@ -76,10 +78,12 @@ public class BoardService {
 		return cnt == 1;
 	}
 
+	
 	public boolean addBoard(Board board, MultipartFile[] files) throws Exception {
 		
 		// 게시물 insert
 		int cnt = mapper.insert(board);
+		
 		
 		for(MultipartFile file : files) {
 			if(file.getSize() > 0) {

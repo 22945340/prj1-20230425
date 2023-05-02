@@ -52,10 +52,17 @@ public interface BoardMapper {
 	
 	
 	@Select("""
-			SELECT *
-			FROM Board
-			WHERE id = #{id}
+			SELECT 
+				b.id,
+				b.title,
+				b.body,
+				b.inserted,
+				b.writer,
+				f.fileName
+			FROM Board b LEFT JOIN FileName f ON b.id=f.boardId
+			WHERE b.id = #{id}
 			""")
+	@ResultMap("boardResultMap")
 	Board selectById(Integer id);
 
 	@Update("""
