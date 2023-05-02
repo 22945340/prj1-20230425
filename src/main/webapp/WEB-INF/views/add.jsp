@@ -32,10 +32,14 @@
 						<label for="writerInput" class="form-label">작성자</label>
 						<input id="writerInput" class="form-control" type="text" value="${board.writer }" name="writer" />
 					</div>
+
+
 					<div class="mb-3">
-						<input type="file" name="files" multiple accept="image/*" />
+						<label for="formFileSm" class="form-label"></label>
+						<input class="form-control form-control-sm" id="formFileSm" type="file" type="file" name="files" multiple accept="image/*" />
 					</div>
-					<div>
+
+
 						<input class="btn btn-primary" type="submit" value="등록" />
 					</div>
 				</form>
@@ -45,6 +49,6 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	
+
 </body>
 </html>

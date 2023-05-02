@@ -16,33 +16,41 @@
 	<my:alert />
 
 	<div class="container-lg">
-		<div class="row justify-content-center">
+		<div class="row justify-content-center ">
 			<div class="col-12 col-md-8 col-lg-6">
-				<h1>${board.id }번게시물보기</h1>
-				<div class="mb-3">
-					<label for="" class="form-label">제목</label> 
-					<input type="text" class="form-control-plaintext" value="${board.title}" readonly />
+				<div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+				<h2>${board.id }번게시물보기</h2>
 				</div>
-				
+				<div class="mb-3">
+					<label for="" class="form-label">제목</label>
+					<input type="text" class="form-control" value="${board.title}" readonly />
+				</div>
+
 				<!-- 그림 파일 출력 -->
 				<div class="mb-3">
-					<c:forEach items="${board.fileName }" var = "fileName">
-						<%-- http://localhost:8080/image/게시물번호/fileName --%>
-						<img src="http://localhost:8080/image/${board.id }/${fileName }" alt="" />	<br />				
+					<c:forEach items="${board.fileName }" var="fileName">
+						<div class="mb-3">
+							<%-- http://localhost:8080/image/게시물번호/fileName --%>
+							<img src="http://localhost:8080/image/${board.id }/${fileName }" alt="" />
+							<br />
+						</div>
 					</c:forEach>
+				</div>
+
+
+				<div class="mb-3">
+					<label for="" class="form-label">본문</label>
+					<textarea rows="10" class="form-control" readonly>${board.body}</textarea>
 				</div>
 				
 				<div class="mb-3">
-					<label for="" class="form-label">본문</label>
-					<textarea rows="10" class="form-control-plaintext" readonly>${board.body}</textarea>
-				</div>
-				<div class="mb-3">
 					<label for="" class="form-label">작성자</label>
-					<input type="text" class="form-control-plaintext" value="${board.writer}" readonly />
+					<input type="text" class="form-control" value="${board.writer}" readonly />
 				</div>
+				
 				<div class="mb-3">
 					<label for="" class="form-label">작성일시</label>
-					<input type="datetime" class="form-control-plaintext" value="${board.inserted}" readonly />
+					<input type="datetime" class="form-control" value="${board.inserted}" readonly />
 				</div>
 				<div class="mb-3">
 					<a class="btn btn-secondary" href="/modify/${board.id }">수정</a>

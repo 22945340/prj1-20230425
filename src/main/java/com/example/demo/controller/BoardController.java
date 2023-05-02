@@ -50,7 +50,7 @@ public class BoardController {
 		model.addAttribute("board", board);
 		// 4. forward/redirect
 		
-		System.out.println(board.getFileName()	);
+		System.out.println(board.getFileName());
 		return "get";
 	}
 

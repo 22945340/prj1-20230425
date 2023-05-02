@@ -13,13 +13,13 @@ public interface BoardMapper {
 			<script>
 			<bind name="pattern" value="'%' + search + '%'" />
 			SELECT
-				id,
+				b.id id,
 				title,
 				writer,
-				inserted
+				inserted,
+				COUNT(f.id) fileCount
 			FROM 
-				Board
-				
+				Board b LEFT JOIN FileName f ON b.id = f.boardId				
 			<choose>
 			
 			<when test="searchOption == 'writerTitle'">
@@ -40,13 +40,16 @@ public interface BoardMapper {
 			</when>
 			
 			</choose>
-			
+			GROUP BY
+				b.id
+				
 			ORDER BY 
-				id DESC
+				b.id DESC
 			LIMIT
 			#{startIndex}, #{num}
 			</script>
 			""")
+	@ResultMap("boardListMap")
 	List<Board> selectPage(Integer startIndex, Integer num, String search, String searchOption);
 
 	

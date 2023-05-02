@@ -58,6 +58,10 @@
 						<td>${board.id }</td>
 						<td>
 							<a href="/id/${board.id }"> ${board.title } </a>
+							<c:if test="${board.fileCount ge 1  }">
+								<span class="badge text-bg-light"> <i class="fa-regular fa-image"></i> ${board.fileCount }</span>
+							</c:if>
+							
 						</td>
 						<td>${board.writer }</td>
 						<td>${board.inserted }</td>
@@ -70,47 +74,47 @@
 
 
 	<nav aria-label="Page navigation example">
-	<ul class="pagination justify-content-center">
+		<ul class="pagination justify-content-center">
 
-		<!-- 맨앞 -->
-		<c:if test="${pageInfo.currentPageNumber > 1 }">
-			<my:pageItem pageNumber="1">
-				<i class="fa-solid fa-angles-left"></i>
-			</my:pageItem>
-		</c:if>
-		
-		<!-- 이전 -->
-		<c:if test="${pageInfo.currentPageNumber > 1 }">
-			<my:pageItem pageNumber="${pageInfo.currentPageNumber -1}">
-				<i class="fa-solid fa-angle-left"></i>
-			</my:pageItem>					
-		</c:if>
+			<!-- 맨앞 -->
+			<c:if test="${pageInfo.currentPageNumber > 1 }">
+				<my:pageItem pageNumber="1">
+					<i class="fa-solid fa-angles-left"></i>
+				</my:pageItem>
+			</c:if>
+
+			<!-- 이전 -->
+			<c:if test="${pageInfo.currentPageNumber > 1 }">
+				<my:pageItem pageNumber="${pageInfo.currentPageNumber -1}">
+					<i class="fa-solid fa-angle-left"></i>
+				</my:pageItem>
+			</c:if>
 
 
-		<c:forEach begin="${pageInfo.begin }" end="${pageInfo.end }" var="pageNumber">
-			<!-- li.page-item>a.page-link -->
-			<my:pageItem pageNumber="${pageNumber }">
+			<c:forEach begin="${pageInfo.begin }" end="${pageInfo.end }" var="pageNumber">
+				<!-- li.page-item>a.page-link -->
+				<my:pageItem pageNumber="${pageNumber }">
 				${pageNumber }
 			</my:pageItem>
-			
-		</c:forEach>
 
-		<!-- 다음 버튼 -->
-		<c:if test="${pageInfo.nextPageNumber le pageInfo.lastPageNumber }">
-			<my:pageItem pageNumber="${pageInfo.currentPageNumber + 1 }">
-				<i class="fa-solid fa-angle-right"></i>
-			</my:pageItem>
-		</c:if>
+			</c:forEach>
+
+			<!-- 다음 버튼 -->
+			<c:if test="${pageInfo.nextPageNumber le pageInfo.lastPageNumber }">
+				<my:pageItem pageNumber="${pageInfo.currentPageNumber + 1 }">
+					<i class="fa-solid fa-angle-right"></i>
+				</my:pageItem>
+			</c:if>
 
 
-		<!-- 맨뒤로 -->
-		<c:if test="${ pageInfo.currentPageNumber < pageInfo.lastPageNumber }">
-		<my:pageItem pageNumber="${pageInfo.lastPageNumber }">
-			<i class="fa-solid fa-angles-right"></i>
-		</my:pageItem>
-		</c:if>
-	</ul>
-</nav>
+			<!-- 맨뒤로 -->
+			<c:if test="${ pageInfo.currentPageNumber < pageInfo.lastPageNumber }">
+				<my:pageItem pageNumber="${pageInfo.lastPageNumber }">
+					<i class="fa-solid fa-angles-right"></i>
+				</my:pageItem>
+			</c:if>
+		</ul>
+	</nav>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

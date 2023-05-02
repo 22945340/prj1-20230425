@@ -15,6 +15,16 @@
 		</collection>
 	</resultMap>
 	
+	<resultMap type="com.example.demo.domain.Board" id="boardListMap">
+		<id column="id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="inserted" property="inserted"/>
+		<result column="fileCount" property="fileCount"/>
+		
+	</resultMap>
+	
+	
 	
 
 </mapper>
