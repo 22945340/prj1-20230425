@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
 import org.springframework.web.servlet.mvc.support.*;
 
 import com.example.demo.domain.*;
@@ -95,12 +96,13 @@ public class BoardController {
 	}
 
 	@PostMapping("add")
-	public String addProcess(Board board, RedirectAttributes rttr) {
+	public String addProcess(@RequestParam("files") MultipartFile[] files,
+			Board board, RedirectAttributes rttr) throws Exception {
 		// 새 게시물 db에 추가
 		// 1.
 
 		// 2.
-		boolean ok = service.addBoard(board);
+		boolean ok = service.addBoard(board, files);
 
 		// 3.
 		if (ok) {

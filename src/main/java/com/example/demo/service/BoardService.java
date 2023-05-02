@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
+import java.io.*;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.web.multipart.*;
 
 import com.example.demo.domain.*;
 import com.example.demo.mapper.*;
@@ -74,9 +76,32 @@ public class BoardService {
 		return cnt == 1;
 	}
 
-	public boolean addBoard(Board board) {
+	public boolean addBoard(Board board, MultipartFile[] files) throws Exception {
+		
+		// 게시물 insert
 		int cnt = mapper.insert(board);
-//		int cnt = 0;	
+		
+		for(MultipartFile file : files) {
+			if(file.getSize() > 0) {
+				System.out.println(file.getOriginalFilename());
+				System.out.println(file.getSize());
+				
+				// (파일 시스템에) 파일 저장
+				String folder = "C:\\study\\upload\\" + board.getId();
+				File targetFolder = new File(folder);
+				if (!targetFolder.exists()) {
+					targetFolder.mkdir();
+				}
+				String path = folder + "\\" + file.getOriginalFilename();
+				File target = new File(path);
+				file.transferTo(target);
+				
+				// db에 관련 정보 저장 (insert)
+				mapper.insertFileName(board.getId(), file.getOriginalFilename());
+				
+				
+			}
+		}
 		
 		return cnt == 1;
 	}

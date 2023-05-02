@@ -110,6 +110,15 @@ public interface BoardMapper {
 			""")
 	Integer size(String search, String searchOption);
 
+
+	@Insert("""
+			INSERT INTO FileName (boardId, fileName)
+			VALUES
+			(#{boardId}, #{fileName})
+			""")
+//	@Options(useGeneratedKeys = true, keyProperty = "id")
+	void insertFileName(Integer boardId, String fileName);
+
 	
 }
 
