@@ -11,16 +11,24 @@ import org.springframework.web.multipart.*;
 import com.example.demo.domain.*;
 import com.example.demo.mapper.*;
 
+import software.amazon.awssdk.services.s3.*;
+
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class BoardService {
+	
+	@Autowired
+	private S3Client s3;
 
 	@Autowired
 	private BoardMapper mapper;
+	
+	@Value("${aws.s3.bucketName}")
+	private String bucketName;
 
 	public Map<String, Object> listBoard(Integer page, Integer num, String search, String searchOption) {
-		Integer startIndex = (page -1) * num;
 		
+		Integer startIndex = (page -1) * num;
 		
 		// 데이터 수
 		Integer size = mapper.size(search, searchOption);
