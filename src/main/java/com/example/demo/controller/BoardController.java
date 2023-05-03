@@ -67,6 +67,7 @@ public class BoardController {
 			@RequestParam(value="removeFiles", required = false) List<String> removeFileNames,
 			RedirectAttributes rttr) throws Exception {
 
+		System.out.println(addFiles);
 		boolean ok = service.modify(board, addFiles, removeFileNames);
 
 		if (ok) {
