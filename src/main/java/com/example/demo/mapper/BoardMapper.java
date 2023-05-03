@@ -126,8 +126,36 @@ public interface BoardMapper {
 			VALUES
 			(#{boardId}, #{fileName})
 			""")
-//	@Options(useGeneratedKeys = true, keyProperty = "id")
 	void insertFileName(Integer boardId, String fileName);
+
+
+
+	@Select("""
+			SELECT fileName
+			FROM FileName
+			WHERE
+				boardId = #{id}
+			""")
+	List<String> selectFileNamesByBoardId(Integer id);
+
+
+
+	@Delete("""
+			DELETE FROM FileName
+			WHERE 
+				boardId = #{id}
+			""")
+	void deleteFileNameByBoardId(Integer id);
+
+
+
+	@Delete("""
+			DELETE FROM FileName
+			WHERE 
+				boardId = #{boardId } AND
+				fileName = #{fileName }
+			""")
+	void deleteFileNameByBoardIdAndFileName(Integer boardId, String fileName);
 
 	
 }
