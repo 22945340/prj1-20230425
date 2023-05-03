@@ -80,8 +80,11 @@ public class BoardService {
 				File dir = new File(dirPath);
 				if (file.exists()) {
 					file.delete();
-					
+					if (dir.isDirectory() && dir.list().length == 0) {
+						dir.delete();
+					}
 				}
+				
 				
 				// 테이블에서 삭제
 				mapper.deleteFileNameByBoardIdAndFileName(board.getId(), fileName);
