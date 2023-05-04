@@ -37,14 +37,15 @@
 					<div class="mb-3">
 						<label for="formFileSm" class="form-label"></label>
 						<input class="form-control form-control-sm" id="formFileSm" type="file" type="file" name="files" multiple accept="image/*" />
+						<div class="form-text"> 파일당 1MB, 총합 10MB를 초과할 수 없습니다.</div>
 					</div>
 
 
-						<input class="btn btn-primary" type="submit" value="등록" />
-					</div>
-				</form>
+					<input class="btn btn-primary" type="submit" value="등록" />
 			</div>
+			</form>
 		</div>
+	</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

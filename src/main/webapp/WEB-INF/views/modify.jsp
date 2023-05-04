@@ -55,6 +55,7 @@
 					<div class="mb-3">
 						<label for="formFileSm" class="form-label"></label>
 						<input class="form-control form-control-sm" id="formFileSm" type="file" type="file" name="files" multiple accept="image/*" />
+						<div class="form-text"> 파일당 1MB, 총합 10MB를 초과할 수 없습니다.</div>
 					</div>
 
 
