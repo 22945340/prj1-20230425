@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.*;
 import org.springframework.web.multipart.*;
 
 import com.example.demo.domain.*;
-import com.example.demo.mapper.*;
-
+import com.example.demo.mapper.*;import software.amazon.awssdk.core.sync.*;
 import software.amazon.awssdk.services.s3.*;
+import software.amazon.awssdk.services.s3.model.*;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -76,22 +76,21 @@ public class BoardService {
 	}
 
 	public boolean modify(Board board, MultipartFile[] addFiles, List<String> removeFileNames) throws Exception {
-		String dirPath = "C:\\study\\upload\\" + board.getId() ;
+		String dirKey = "board/" + board.getId() ;
 		
 		// FileName 테이블 삭제
 		if (removeFileNames != null && !removeFileNames.isEmpty()) {
 			for (String fileName : removeFileNames) {
 				
 				// 하드 디스크에서 삭제
-				String path = dirPath + "\\"  + fileName;
-				File file = new File(path);
-				File dir = new File(dirPath);
-				if (file.exists()) {
-					file.delete();
-					if (dir.isDirectory() && dir.list().length == 0) {
-						dir.delete();
-					}
-				}
+				String fileKey = dirKey + "/"  + fileName;
+				
+				DeleteObjectRequest dor = DeleteObjectRequest.builder()
+							.key(fileKey)
+							.bucket(bucketName)
+							.build();
+				
+				s3.deleteObject(dor);
 				
 				
 				// 테이블에서 삭제
@@ -106,18 +105,17 @@ public class BoardService {
 				mapper.insertFileName(board.getId(), newFile.getOriginalFilename());
 				
 				String fileName = newFile.getOriginalFilename();
-				String path = dirPath + "\\" + fileName;
+				String fileKey = dirKey + "/" + fileName;
 				
-				File dir = new File(dirPath);
+				PutObjectRequest por = PutObjectRequest.builder().
+									key(fileKey).
+									acl(ObjectCannedACL.PUBLIC_READ)
+									.bucket(bucketName)
+									.build();
+				RequestBody rb = RequestBody.fromInputStream(newFile.getInputStream(), newFile.getSize());
 				
-				// 디렉터리 없으면 만들기
-				if (!dir.exists()) {
-					dir.mkdirs();
-				}
+				s3.putObject(por, rb);
 				
-				// 파일을 하드디스크에 저장
-				File file = new File(path);
-				newFile.transferTo(file);
 			}
 		}
 		
@@ -136,14 +134,14 @@ public class BoardService {
 		
 		// 하드 디스크의 파일 지우기
 		for (String fileName : fileNames) {
-			String dirPath = "C:\\study\\upload\\" + id ;
-			String path = dirPath + "\\"  + fileName;
-			File file = new File(path);
-			File dir = new File(dirPath);
-			if (file.exists()) {
-				file.delete();
-				dir.delete();
-			}
+			String dirKey = "board/" + id ;
+			String fileKey = dirKey + "/"  + fileName;
+
+			DeleteObjectRequest dor = DeleteObjectRequest.builder()
+					.bucket(bucketName)
+					.key(fileKey)
+					.build();
+			s3.deleteObject(dor);
 		}
 		
 		
@@ -161,19 +159,21 @@ public class BoardService {
 		
 		for(MultipartFile file : files) {
 			if(file.getSize() > 0) {
-				System.out.println(file.getOriginalFilename());
-				System.out.println(file.getSize());
 				
 				// (파일 시스템에) 파일 저장
-				String folder = "C:\\study\\upload\\" + board.getId();
-				File targetFolder = new File(folder);
-				if (!targetFolder.exists()) {
-					targetFolder.mkdir();
-				}
-				String path = folder + "\\" + file.getOriginalFilename();
-				File target = new File(path);
-				file.transferTo(target);
+				String dirKey = "board/" + board.getId();
+				String fileKey = dirKey + "/" + file.getOriginalFilename();
 				
+				PutObjectRequest por = PutObjectRequest.builder()
+						.key(fileKey)
+						.acl(ObjectCannedACL.PUBLIC_READ)
+						.bucket(bucketName)
+						.build();
+				
+				RequestBody rb = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+				s3.putObject(por, rb);
+				
+
 				// db에 관련 정보 저장 (insert)
 				mapper.insertFileName(board.getId(), file.getOriginalFilename());
 				
