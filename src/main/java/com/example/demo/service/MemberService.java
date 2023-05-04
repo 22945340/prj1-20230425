@@ -26,4 +26,9 @@ public class MemberService {
 		
 	}
 
+	public Member get(String id) {
+		
+		return mapper.getMemberInfo(id);
+	}
+
 }

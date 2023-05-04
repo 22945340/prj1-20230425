@@ -18,9 +18,8 @@
 	<div class="container-lg">
 		<div class="row justify-content-center ">
 			<div class="col-12 col-md-8 col-lg-6">
-				<div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
 				<h2>${board.id }번게시물보기</h2>
-				</div>
+				<hr />
 				<div class="mb-3">
 					<label for="" class="form-label">제목</label>
 					<input type="text" class="form-control" value="${board.title}" readonly />
@@ -52,8 +51,9 @@
 					<input type="datetime" class="form-control" value="${board.inserted}" readonly />
 				</div>
 				<div class="mb-3">
-					<a class="btn btn-secondary" href="/modify/${board.id }">수정</a>
+					<a class="btn btn-primary" href="/modify/${board.id }">수정</a>
 					<button id="removeButton" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">삭제</button>
+					<button type ="button" class="btn btn-secondary" onclick="location.href='/list'">목록으로</button>
 				</div>
 			</div>
 		</div>

@@ -20,7 +20,8 @@
 			<div class="col-12 col-md-8 col-lg-6">
 
 
-				<h1>${board.id }번게시물 수정</h1>
+				<h2>${board.id }번게시물 수정</h2>
+				<hr />
 				<form method="post" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="${board.id }" />
 					<div class="mb-3">
@@ -60,7 +61,8 @@
 
 
 					<div class="mb-3">
-						<input class="btn btn-secondary" type="submit" value="수정" />
+						<input class="btn btn-primary" type="submit" value="수정" />
+						<button type ="button" class="btn btn-secondary" onclick="location.href='javascript:history.back()'">취소</button>
 					</div>
 				</form>
 			</div>

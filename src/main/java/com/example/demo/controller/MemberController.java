@@ -42,6 +42,12 @@ public class MemberController {
 		model.addAttribute("memberList", service.showMemberList(member));
 	}
 	
+	// 경로 : /member/info?id=${member.id}
+	@GetMapping("info")
+	public void memberInfo(String id, Model model) {
+		Member member = service.get(id);
+		model.addAttribute("member",member);
+	}
 	
 	
 	
