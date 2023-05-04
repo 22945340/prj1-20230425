@@ -43,18 +43,6 @@
 			
 
 
-			<form action="${pageLink }" class="d-flex" role="search">
-				<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="searchOption">
-					<option value="writer" ${param.searchOption eq 'writer' ? 'selected' : '' }>작성자</option>
-					<option value="title" ${param.searchOption eq 'title' ? 'selected' : '' }>제목</option>
-					<option value="writerTitle" ${param.searchOption eq 'writerTitle' ? 'selected' : '' }>작성자+제목</option>
-				</select>
-
-				<input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="${param.search }">
-				<button class="btn btn-outline-success" type="submit">
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</button>
-			</form>
 		</div>
 	</div>
 </nav>

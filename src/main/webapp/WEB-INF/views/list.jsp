@@ -22,25 +22,42 @@
 		<h1>목록</h1>
 
 		<hr />
-		<div style="float: right">
-			<c:url value="/list" var="pageLink">
-				<c:param name="page" value="${pageInfo.prevPageNumber }"></c:param>
-				<c:param name="num" value="${pageInfo.num}"></c:param>
-				<c:if test="${not empty param.search }">
-					<c:param name="search" value="${param.search }"></c:param>
-				</c:if>
-				<c:if test="${not empty param.searchOption }">
-					<c:param name="searchOption" value="${param.searchOption }"></c:param>
-				</c:if>
-			</c:url>
+		<div>
+			<div style="float: left">
+				<c:url value="/list" var="pageLink">
+					<c:param name="page" value="${pageInfo.prevPageNumber }"></c:param>
+					<c:param name="num" value="${pageInfo.num}"></c:param>
+					<c:if test="${not empty param.search }">
+						<c:param name="search" value="${param.search }"></c:param>
+					</c:if>
+					<c:if test="${not empty param.searchOption }">
+						<c:param name="searchOption" value="${param.searchOption }"></c:param>
+					</c:if>
+				</c:url>
 
-			<form action="${pageLink }" method="get" name="selectNum">
-				<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="num" onchange="selectNum.submit()">
-					<option value="10" ${pageInfo.num eq 10 ? 'selected' : '' }>10개씩 보기</option>
-					<option value="20" ${pageInfo.num eq 20 ? 'selected' : '' }>20개씩 보기</option>
-					<option value="30" ${pageInfo.num eq 30 ? 'selected' : '' }>30개씩 보기</option>
-				</select>
-			</form>
+				<form action="${pageLink }" method="get" name="selectNum">
+					<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="num" onchange="selectNum.submit()">
+						<option value="10" ${pageInfo.num eq 10 ? 'selected' : '' }>10개씩 보기</option>
+						<option value="20" ${pageInfo.num eq 20 ? 'selected' : '' }>20개씩 보기</option>
+						<option value="30" ${pageInfo.num eq 30 ? 'selected' : '' }>30개씩 보기</option>
+					</select>
+				</form>
+			</div>
+
+			<div style="float: right">
+				<form action="${pageLink }" class="d-flex" role="search">
+					<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="searchOption">
+						<option value="writer" ${param.searchOption eq 'writer' ? 'selected' : '' }>작성자</option>
+						<option value="title" ${param.searchOption eq 'title' ? 'selected' : '' }>제목</option>
+						<option value="writerTitle" ${param.searchOption eq 'writerTitle' ? 'selected' : '' }>작성자+제목</option>
+					</select>
+
+					<input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="${param.search }">
+					<button class="btn btn-outline-success" type="submit">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button>
+				</form>
+			</div>
 		</div>
 
 		<table class="table">
@@ -59,9 +76,12 @@
 						<td>
 							<a href="/id/${board.id }"> ${board.title } </a>
 							<c:if test="${board.fileCount ge 1  }">
-								<span class="badge text-bg-light"> <i class="fa-regular fa-image"></i> ${board.fileCount }</span>
+								<span class="badge text-bg-light">
+									<i class="fa-regular fa-image"></i>
+									${board.fileCount }
+								</span>
 							</c:if>
-							
+
 						</td>
 						<td>${board.writer }</td>
 						<td>${board.inserted }</td>
