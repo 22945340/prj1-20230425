@@ -20,7 +20,7 @@
 			<div class="col-12 col-md-8 col-lg-6">
 
 
-				<h2>${board.id }번게시물 수정</h2>
+				<h2>${board.id }번게시물수정</h2>
 				<hr />
 				<form method="post" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="${board.id }" />
@@ -31,11 +31,25 @@
 
 					<!-- 그림 파일 출력 -->
 					<div class="mb-3">
-						<c:forEach items="${board.fileName }" var="fileName">
-							<input type="checkbox" name="removeFiles" value="${fileName}" />
+						<c:forEach items="${board.fileName }" var="fileName" varStatus="status">
 							<div class="mb-3">
-									<img class="img-thumbnail img-fluid" src="${bucketUrl }/${board.id }/${fileName}" alt="" />
-								<br />
+								<div class="row">
+									<div class="col-2 d-flex">
+										<div class="form-check form-switch m-auto">
+											<input name="removeFiles" value="${fileName }" class="btn-check inpt" type="checkbox" role="switch" id="removeCheckBox${status.index }">
+											<label class="btn btn-outline-danger" for="removeCheckBox${status.index }">
+												<i class="fa-solid fa-trash-can"></i>
+											</label>
+											
+										</div>
+									</div>
+
+									<div class="col-10">
+										<div>
+											<img class="img-thumbnail img-fluid" src="${bucketUrl }/${board.id }/${fileName}" alt="" />
+										</div>
+									</div>
+								</div>
 							</div>
 						</c:forEach>
 					</div>
@@ -56,13 +70,14 @@
 					<div class="mb-3">
 						<label for="formFileSm" class="form-label"></label>
 						<input class="form-control form-control-sm" id="formFileSm" type="file" type="file" name="files" multiple accept="image/*" />
-						<div class="form-text"> 파일당 1MB, 총합 10MB를 초과할 수 없습니다.</div>
+						<div class="form-text">파일당 1MB, 총합 10MB를 초과할 수 없습니다.</div>
 					</div>
+
 
 
 					<div class="mb-3">
 						<input class="btn btn-primary" type="submit" value="수정" />
-						<button type ="button" class="btn btn-secondary" onclick="location.href='javascript:history.back()'">취소</button>
+						<button type="button" class="btn btn-secondary" onclick="location.href='javascript:history.back()'">취소</button>
 					</div>
 				</form>
 			</div>

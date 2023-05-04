@@ -17,6 +17,15 @@
 
 	<my:alert />
 
+	<c:url value="/list" var="pageLink">
+		<c:param name="page" value="${pageInfo.prevPageNumber }"></c:param>
+		<c:if test="${not empty param.search }">
+			<c:param name="search" value="${param.search }"></c:param>
+		</c:if>
+		<c:if test="${not empty param.searchOption }">
+			<c:param name="searchOption" value="${param.searchOption }"></c:param>
+		</c:if>
+	</c:url>
 
 	<div class="container-lg">
 		<h1>목록</h1>
@@ -24,18 +33,12 @@
 		<hr />
 		<div>
 			<div style="float: left">
-				<c:url value="/list" var="pageLink">
-					<c:param name="page" value="${pageInfo.prevPageNumber }"></c:param>
-					<c:param name="num" value="${pageInfo.num}"></c:param>
-					<c:if test="${not empty param.search }">
-						<c:param name="search" value="${param.search }"></c:param>
-					</c:if>
-					<c:if test="${not empty param.searchOption }">
-						<c:param name="searchOption" value="${param.searchOption }"></c:param>
-					</c:if>
-				</c:url>
 
 				<form action="${pageLink }" method="get" name="selectNum">
+
+					<input type="hidden" name="search" value="${param.search }" />
+					<input type="hidden" name="searchOption" value="${param.searchOption }" />
+
 					<select class="form-select form-select-sm" aria-label=".form-select-sm example" name="num" onchange="selectNum.submit()">
 						<option value="10" ${pageInfo.num eq 10 ? 'selected' : '' }>10개씩 보기</option>
 						<option value="20" ${pageInfo.num eq 20 ? 'selected' : '' }>20개씩 보기</option>
