@@ -33,8 +33,7 @@
 						<c:forEach items="${board.fileName }" var="fileName">
 							<input type="checkbox" name="removeFiles" value="${fileName}" />
 							<div class="mb-3">
-								<c:set var="bucketUrl" value="https://bucket0503-5349.s3.ap-northeast-2.amazonaws.com/board" />
-								<img class="img-thumbnail img-fluid" src="${bucketUrl }/${board.id }/${fileName}" alt="" />
+									<img class="img-thumbnail img-fluid" src="${bucketUrl }/${board.id }/${fileName}" alt="" />
 								<br />
 							</div>
 						</c:forEach>
