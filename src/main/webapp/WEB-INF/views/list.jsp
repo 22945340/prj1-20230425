@@ -19,7 +19,7 @@
 
 
 	<div class="container-lg">
-		<h1>목록123</h1>
+		<h1>목록</h1>
 
 		<hr />
 		<div style="float: right">
