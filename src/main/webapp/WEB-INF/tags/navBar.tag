@@ -14,10 +14,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link ${current eq 'list' ? 'active' : '' }" href="/list">목록</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link ${current eq 'add' ? 'active' : '' }" href="/add">글쓰기</a>
+					<a class="nav-link ${current eq 'list' ? 'active' : '' }" href="/list">자유 게시판</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link ${current eq 'signup' ? 'active' : '' }" href="/member/signup">회원가입</a>

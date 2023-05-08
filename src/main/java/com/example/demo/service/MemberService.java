@@ -31,4 +31,9 @@ public class MemberService {
 		return mapper.getMemberInfo(id);
 	}
 
+	public void remove(String id) {
+		mapper.deleteById(id);
+		
+	}
+
 }

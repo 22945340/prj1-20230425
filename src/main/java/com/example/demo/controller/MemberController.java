@@ -49,6 +49,10 @@ public class MemberController {
 		model.addAttribute("member",member);
 	}
 	
+	@PostMapping("remove")
+	public void remove(String id) {
+		service.remove(id);
+	}
 	
 	
 	

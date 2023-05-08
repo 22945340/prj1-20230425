@@ -28,7 +28,7 @@
 	</c:url>
 
 	<div class="container-lg">
-		<h1>목록</h1>
+		<h1>자유 게시판</h1>
 
 		<hr />
 		<div>
@@ -59,9 +59,9 @@
 					<button class="btn btn-outline-success" type="submit">
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</button>
-				</form>
+				</form> <br />
+				<button style="float:right" onclick="location.href='/add'" class="btn btn-outline-primary">글쓰기</button>
 			</div>
-		</div>
 
 		<table class="table">
 			<thead>

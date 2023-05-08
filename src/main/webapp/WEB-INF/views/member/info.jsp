@@ -23,21 +23,48 @@
 				<!-- .mb-3*4>label+input -->
 				<div class="mb-3">
 					<label class="form-label" for="">아이디</label>
-					<input class="form-control" type="text" value="${member.id }" readonly/>
+					<input class="form-control" type="text" value="${member.id }" readonly />
 				</div>
 				<div class="mb-3">
 					<label class="form-label" for="">패스워드</label>
-					<input class="form-control" type="text" value="${member.password }" readonly/>
+					<input class="form-control" type="text" value="${member.password }" readonly />
 				</div>
 				<div class="mb-3">
 					<label class="form-label" for="">별명</label>
-					<input class="form-control" type="text" value="${member.nickName }" readonly/>
+					<input class="form-control" type="text" value="${member.nickName }" readonly />
 				</div>
 				<div class="mb-3">
 					<label class="form-label" for="">이메일</label>
 					<input class="form-control" type="text" value="${member.email }" readonly />
 				</div>
-			
+
+				<a href="">수정</a>
+				<button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">탈퇴</button>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="d-none"></div>
+
+	<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">탈퇴 확인</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="removeForm" action="/member/remove" method="post">
+						<input type="hidden" name="id" value="${member.id }" />
+						<label for="passwordInput1" >암호 확인</label>
+						<input id="passwordInput1" type="password" name="password" class="form-control" />
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger" form="removeForm">탈퇴</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+				</div>
 			</div>
 		</div>
 	</div>
