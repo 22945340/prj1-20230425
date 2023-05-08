@@ -38,4 +38,14 @@ public interface MemberMapper {
 			""")
 	Integer deleteById(Member member);
 
+	@Update("""
+			UPDATE Member
+			SET password = #{password},
+				nickName = #{nickName},
+				email = #{email}
+			where
+				id = #{id}
+			""")
+	void update(Member member);
+
 }

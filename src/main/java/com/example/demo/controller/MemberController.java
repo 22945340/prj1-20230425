@@ -62,6 +62,28 @@ public class MemberController {
 		}
 	}
 	
+	@GetMapping("modify")
+	public void modify(Member member, Model model) {
+		member = service.get(member.getId());
+		model.addAttribute("member", member);
+	}
+	
+	
+	@PostMapping("modify")
+	public String modifyProcess(Member member, RedirectAttributes rttr, String oldPassword) {
+		boolean ok = service.modify(member, oldPassword);
+		
+		if(ok) {
+			rttr.addFlashAttribute("message", "회원정보가 수정되었습니다.");
+			return "redirect:/member/info?id=" + member.getId();
+		} else {
+			rttr.addFlashAttribute("message", "이전 암호를 확인해 주세요.");
+			return "redirect:/member/info?id=" + member.getId();
+		}
+	}
+	
+	
+	
 	
 	
 	

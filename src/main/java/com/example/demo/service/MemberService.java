@@ -23,30 +23,40 @@ public class MemberService {
 
 	public List<Member> showMemberList(Member member) {
 		return mapper.selectMemberList(member);
-		
+
 	}
 
 	public Member get(String id) {
-		
+
 		return mapper.getMemberInfo(id);
 	}
 
 	public boolean remove(Member member) {
 		Member oldMember = mapper.getMemberInfo(member.getId());
 		int cnt = 0;
-		
-		if(oldMember.getPassword().equals(member.getPassword())) { 
+
+		if (oldMember.getPassword().equals(member.getPassword())) {
 			// 암호가 일치하면?
 			mapper.deleteById(member);
-			
+
 			return cnt == 0;
-			
+
 		} else {
 			// 암호가 일치하지 않으면?
 			return cnt == 1;
 		}
-		
-		
+
+	}
+
+	public boolean modify(Member member, String oldPassword) {
+		int cnt = 0;
+
+		if (mapper.getMemberInfo(member.getId()).getPassword().equals(oldPassword)) {
+			mapper.update(member);
+			return cnt == 0;
+		} else {
+			return cnt == 1;
+		}
 	}
 
 }
