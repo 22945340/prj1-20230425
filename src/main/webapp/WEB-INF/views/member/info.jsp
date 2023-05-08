@@ -38,7 +38,7 @@
 					<input class="form-control" type="text" value="${member.email }" readonly />
 				</div>
 
-				<a href="">수정</a>
+				<a href="/member/modify?id=${member.id }" class="btn btn-secondary">수정</a>
 				<button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">탈퇴</button>
 
 			</div>

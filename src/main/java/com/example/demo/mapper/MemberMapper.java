@@ -36,6 +36,6 @@ public interface MemberMapper {
 			DELETE FROM Member
 			WHERE id = #{id}
 			""")
-	Integer deleteById(String id);
+	Integer deleteById(Member member);
 
 }

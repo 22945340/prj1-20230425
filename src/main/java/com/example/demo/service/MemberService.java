@@ -31,8 +31,21 @@ public class MemberService {
 		return mapper.getMemberInfo(id);
 	}
 
-	public void remove(String id) {
-		mapper.deleteById(id);
+	public boolean remove(Member member) {
+		Member oldMember = mapper.getMemberInfo(member.getId());
+		int cnt = 0;
+		
+		if(oldMember.getPassword().equals(member.getPassword())) { 
+			// 암호가 일치하면?
+			mapper.deleteById(member);
+			
+			return cnt == 0;
+			
+		} else {
+			// 암호가 일치하지 않으면?
+			return cnt == 1;
+		}
+		
 		
 	}
 
