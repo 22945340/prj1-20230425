@@ -19,7 +19,7 @@ public interface MemberMapper {
 	@Select("""
 			SELECT *
 			FROM Member
-			ORDER By inserted
+			ORDER By inserted DESC
 			LIMIT 10
 			""")
 	List<Member> selectMemberList(Member member);
@@ -39,12 +39,18 @@ public interface MemberMapper {
 	Integer deleteById(Member member);
 
 	@Update("""
+			<script>
 			UPDATE Member
-			SET password = #{password},
-				nickName = #{nickName},
-				email = #{email}
-			where
+			SET 
+				<if test="password neq null and password neq ''">
+				password = #{password},
+				</if>
+			    nickName = #{nickName},
+			    email = #{email}
+			WHERE
 				id = #{id}
+
+			</script>
 			""")
 	void update(Member member);
 
