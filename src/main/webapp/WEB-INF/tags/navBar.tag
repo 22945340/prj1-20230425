@@ -41,7 +41,7 @@
 
 				<sec:authorize access="isAuthenticated()">
 					<span class="navbar-text">
-						${username }님 환영합니다
+						${username }님 
 					</span>
 					<li class="nav-item">
 						<a class="nav-link" href="/member/logout">로그아웃</a>
