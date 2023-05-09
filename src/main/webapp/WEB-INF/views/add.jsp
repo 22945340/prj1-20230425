@@ -37,8 +37,8 @@
 
 
 					<div>
-						<input class="btn btn-primary" type="submit" value="등록" />
-						<button type ="button" class="btn btn-secondary" onclick="location.href='/list'">목록으로</button>
+						<input class="btn btn-outline-primary" type="submit" value="등록" />
+						<button type ="button" class="btn btn-outline-secondary" onclick="location.href='/list'">취소</button>
 					</div>
 			</form>
 			</div>

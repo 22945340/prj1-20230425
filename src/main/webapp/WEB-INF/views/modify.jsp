@@ -72,8 +72,8 @@
 
 
 					<div class="mb-3">
-						<input class="btn btn-primary" type="submit" value="수정" />
-						<button type="button" class="btn btn-secondary" onclick="location.href='javascript:history.back()'">취소</button>
+						<input class="btn btn-outline-primary" type="submit" value="수정" />
+						<button type="button" class="btn btn-outline-secondary" onclick="location.href='javascript:history.back()'">취소</button>
 					</div>
 				</form>
 			</div>

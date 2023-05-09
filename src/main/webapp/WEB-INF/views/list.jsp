@@ -56,11 +56,11 @@
 					</select>
 
 					<input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="${param.search }">
-					<button class="btn btn-outline-success" type="submit">
+					<button class="btn btn-outline-secondary" type="submit">
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</button>
 				</form> <br />
-				<button style="float:right" onclick="location.href='/add'" class="btn btn-outline-primary">글쓰기</button>
+				<button style="float:right" onclick="location.href='/add'" class="btn btn-outline-secondary">글쓰기</button>
 			</div>
 
 		<table class="table">

@@ -56,7 +56,7 @@ public class BoardController {
 	}
 
 	@GetMapping("/modify/{id}")
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated() and @customSecurityChecker.checkBoardWriter(authentication, #id)")
 	public String modifyForm(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("board", service.getBoard(id));
 		return "modify";
@@ -87,7 +87,7 @@ public class BoardController {
 	}
 
 	@PostMapping("remove")
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated() and @customSecurityChecker.checkBoardWriter(authentication, #id)")
 	public String remove(Integer id, RedirectAttributes rttr) {
 		boolean ok = service.remove(id);
 		if (ok) {
@@ -129,5 +129,11 @@ public class BoardController {
 		}
 
 		// 4.
+	}
+	
+	@GetMapping("moveBoard")
+	public String moveBoard(String option) {
+		return "/id/" + service.moveBoard(option);
+		
 	}
 }

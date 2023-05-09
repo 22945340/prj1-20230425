@@ -30,18 +30,18 @@
 			<ul id="loginInputForm" class="navbar-nav me-auto mb-2 mb-lg-0">
 
 				<sec:authorize access="isAnonymous()">
-					<li class="nav-item" style="margin: 10px">
-						<button class="btn btn-outline-success" onclick="location.href = '/member/signup'">회원가입</button>
+					<li class="nav-item" style="margin: 0px 5px">
+						<button class="btn btn-outline-secondary" onclick="location.href = '/member/signup'">회원가입</button>
 					</li>
-					<li class="nav-item" style="margin: 10px">
-						<button class="btn btn-outline-success" onclick="location.href = '/member/login'">로그인</button>
+					<li class="nav-item" style="margin: 0px 5px">
+						<button class="btn btn-outline-secondary" onclick="location.href = '/member/login'">로그인</button>
 					</li>
 				</sec:authorize>
 
 				<sec:authorize access="isAuthenticated()">
-					<li class="navbar-text" style="margin: 10px"> ${username }님 </li>
-					<li class="nav-item" style="margin: 10px">
-						<button class="btn btn-outline-success" onclick="location.href = '/member/logout'">로그아웃</button>
+					<li class="navbar-text" style="margin: 0px 5px"> ${username }님 </li>
+					<li class="nav-item" style="margin: 0px 5px">
+						<button class="btn btn-outline-secondary" onclick="location.href = '/member/logout'">로그아웃</button>
 					</li>
 				</sec:authorize>
 			</ul>

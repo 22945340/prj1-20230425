@@ -24,6 +24,23 @@
 				</h2>
 				<hr />
 				<div class="mb-3">
+					<sec:authorize access="isAuthenticated()">
+						<sec:authentication property="name" var="userId" />
+						<c:if test="${userId eq board.writer }">
+							<a class="btn btn-outline-primary" href="/modify/${board.id }">수정</a>
+							<button id="removeButton" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">삭제</button>
+						</c:if>
+					</sec:authorize>
+					<button type="button" class="btn btn-outline-success" onclick="location.href='/add'">글쓰기</button>
+					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/moveBoard?option=before&id=${board.id}'" style="float: right; margin: 0px 1px;">
+						<i class="fa-solid fa-caret-down"></i>
+					</button>
+					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/list'" style="float: right; margin: 0px 1px;">목록으로</button>
+					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/moveBoard?option=next&id=${board.id}'" style="float: right; margin: 0px 1px;">
+						<i class="fa-solid fa-caret-up"></i>
+					</button>
+				</div>
+				<div class="mb-3">
 					<label for="" class="form-label">제목</label>
 					<input type="text" class="form-control" value="${board.title}" readonly />
 				</div>
@@ -53,40 +70,36 @@
 					<label for="" class="form-label">작성일시</label>
 					<input type="datetime" class="form-control" value="${board.inserted}" readonly />
 				</div>
-				<div class="mb-3">
-					<sec:authorize access="isAuthenticated()">
-						<a class="btn btn-primary" href="/modify/${board.id }">수정</a>
-						<button id="removeButton" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">삭제</button>
-					</sec:authorize>
-					<button type="button" class="btn btn-secondary" onclick="location.href='/list'">목록으로</button>
-				</div>
 			</div>
 		</div>
 	</div>
 
 	<sec:authorize access="isAuthenticated()">
-		<div class="d-none">
-			<form action="/remove" method="post" id="removeForm">
-				<input type="text" name="id" value="${board.id }" />
-			</form>
-		</div>
+		<sec:authentication property="name" var="userId" />
+		<c:if test="${userId eq board.writer }">
+			<div class="d-none">
+				<form action="/remove" method="post" id="removeForm">
+					<input type="text" name="id" value="${board.id }" />
+				</form>
+			</div>
 
-		<!-- Modal -->
-		<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">삭제 확인</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">삭제하시겠습니까?</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-danger" form="removeForm">삭제</button>
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+			<!-- Modal -->
+			<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">삭제 확인</h1>
+							<button type="button" class="btn-outline-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">삭제하시겠습니까?</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-outline-danger" form="removeForm">삭제</button>
+							<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">닫기</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</c:if>
 	</sec:authorize>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
