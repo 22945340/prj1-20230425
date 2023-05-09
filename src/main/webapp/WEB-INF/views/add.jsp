@@ -28,12 +28,7 @@
 						<label for="bodyInput" class="form-label">본문</label>
 						<textarea rows="10" id="bodyInput" class="form-control" name="body">${board.body }</textarea>
 					</div>
-					<div class="mb-3">
-						<label for="writerInput" class="form-label">작성자</label>
-						<input id="writerInput" class="form-control" type="text" value="${board.writer }" name="writer" />
-					</div>
-
-
+					
 					<div class="mb-3">
 						<label for="formFileSm" class="form-label"></label>
 						<input class="form-control form-control-sm" id="formFileSm" type="file" type="file" name="files" multiple accept="image/*" />
