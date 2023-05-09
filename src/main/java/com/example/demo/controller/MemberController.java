@@ -20,6 +20,11 @@ public class MemberController {
 	public void signupForm() {
 
 	}
+	
+	@GetMapping("login")
+	public void loginForm() {
+		
+	}
 
 	@PostMapping("signup")
 	public String signupProcess(Member member, RedirectAttributes rttr) {
