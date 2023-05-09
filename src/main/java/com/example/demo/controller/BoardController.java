@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.security.access.prepost.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +55,7 @@ public class BoardController {
 	}
 
 	@GetMapping("/modify/{id}")
+	@PreAuthorize("isAuthenticated()")
 	public String modifyForm(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("board", service.getBoard(id));
 		return "modify";
@@ -82,6 +84,7 @@ public class BoardController {
 	}
 
 	@PostMapping("remove")
+	@PreAuthorize("isAuthenticated()")
 	public String remove(Integer id, RedirectAttributes rttr) {
 		boolean ok = service.remove(id);
 		if (ok) {
@@ -94,6 +97,7 @@ public class BoardController {
 	}
 
 	@GetMapping("add")
+	@PreAuthorize("isAuthenticated()")
 	public void addForm() {
 		// 게시물 작성 form (view)로 포워드
 

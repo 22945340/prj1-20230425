@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
@@ -19,9 +20,7 @@
 		<div class="row justify-content-center ">
 			<div class="col-12 col-md-8 col-lg-6">
 				<h2>
-				<div>
-				${board.id }번게시물 보기
-				</div>
+					<div>${board.id }번게시물 보기</div>
 				</h2>
 				<hr />
 				<div class="mb-3">
@@ -44,20 +43,22 @@
 					<label for="" class="form-label">본문</label>
 					<textarea rows="10" class="form-control" readonly>${board.body}</textarea>
 				</div>
-				
+
 				<div class="mb-3">
 					<label for="" class="form-label">작성자</label>
 					<input type="text" class="form-control" value="${board.writer}" readonly />
 				</div>
-				
+
 				<div class="mb-3">
 					<label for="" class="form-label">작성일시</label>
 					<input type="datetime" class="form-control" value="${board.inserted}" readonly />
 				</div>
 				<div class="mb-3">
-					<a class="btn btn-primary" href="/modify/${board.id }">수정</a>
-					<button id="removeButton" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">삭제</button>
-					<button type ="button" class="btn btn-secondary" onclick="location.href='/list'">목록으로</button>
+					<sec:authorize access="isAuthenticated()">
+						<a class="btn btn-primary" href="/modify/${board.id }">수정</a>
+						<button id="removeButton" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">삭제</button>
+					</sec:authorize>
+					<button type="button" class="btn btn-secondary" onclick="location.href='/list'">목록으로</button>
 				</div>
 			</div>
 		</div>
