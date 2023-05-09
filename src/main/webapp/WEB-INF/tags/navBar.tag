@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<sec:authentication property="name" var="username"/>
+<sec:authentication property="name" var="username" />
 
 <nav class="navbar navbar-expand-lg bg-dark mb-3 " data-bs-theme="dark">
 	<div class="container-lg">
@@ -31,20 +31,17 @@
 
 				<sec:authorize access="isAnonymous()">
 					<li class="nav-item">
-						<a class="nav-link ${current eq 'signup' ? 'active' : '' }" href="/member/signup">회원가입</a>
+						<button class="btn btn-outline-success" onclick="location.href = '/member/signup'">회원가입</button>
 					</li>
-
 					<li class="nav-item">
-						<a class="nav-link ${current eq 'login' ? 'active' : '' }" href="/member/login">로그인</a>
+						<button class="btn btn-outline-success" onclick="location.href = '/member/login'">로그인</button>
 					</li>
 				</sec:authorize>
 
 				<sec:authorize access="isAuthenticated()">
-					<span class="navbar-text">
-						${username }님 
-					</span>
+					<li class="navbar-text"> ${username }님 </li>
 					<li class="nav-item">
-						<a class="nav-link" href="/member/logout">로그아웃</a>
+						<button class="btn btn-outline-success" onclick="location.href = '/member/logout'">로그아웃</button>
 					</li>
 				</sec:authorize>
 			</ul>
