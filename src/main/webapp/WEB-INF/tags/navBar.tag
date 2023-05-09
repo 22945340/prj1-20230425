@@ -22,10 +22,11 @@
 						<a class="nav-link ${current eq 'memberList' ? 'active' : '' }" href="/member/list">회원목록</a>
 					</li>
 				</sec:authorize>
-
 			</ul>
-
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0" style="float: right">
+		</div>
+		
+		<div>
+		<ul class="navbar-nav me-auto mb-2 mb-lg-0" >
 
 				<sec:authorize access="isAnonymous()">
 					<li class="nav-item">
@@ -38,18 +39,14 @@
 				</sec:authorize>
 
 				<sec:authorize access="isAuthenticated()">
-					<sec:authentication property="principal.username" />님 환영합니다.
+					<li class="nav-item">
+						<sec:authentication property="principal.username" />님 환영합니다.
+					</li>				
 					<li class="nav-item">
 						<a class="nav-link" href="/member/logout">로그아웃</a>
 					</li>
 				</sec:authorize>
 			</ul>
-
-
-
-
-
-
 		</div>
 	</div>
 </nav>
