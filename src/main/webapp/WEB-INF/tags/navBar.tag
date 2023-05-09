@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<sec:authentication property="name" var="username" />
 
+<sec:authentication property="name" var="username" />
 <nav class="navbar navbar-expand-lg bg-dark mb-3 " data-bs-theme="dark">
 	<div class="container-lg">
 		<a class="navbar-brand" href="#">
@@ -27,7 +27,7 @@
 		</div>
 
 		<div>
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			<ul id="loginInputForm" class="navbar-nav me-auto mb-2 mb-lg-0">
 
 				<sec:authorize access="isAnonymous()">
 					<li class="nav-item" style="margin: 10px">

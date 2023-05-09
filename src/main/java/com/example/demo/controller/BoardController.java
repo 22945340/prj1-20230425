@@ -64,6 +64,7 @@ public class BoardController {
 
 //	@RequestMapping(value = "/modify/{id}", method = RequestMethod.POST)
 	@PostMapping("/modify/{id}")
+	@PreAuthorize("isAuthenticated() and @customSecurityChecker.checkBoardWriter(authentication, #board.id)")
 	public String modifyProcess(Board board,
 			@RequestParam(value="files", required = false) MultipartFile[] addFiles,
 			@RequestParam(value="removeFiles", required = false) List<String> removeFileNames,
