@@ -24,9 +24,9 @@
 				</sec:authorize>
 			</ul>
 		</div>
-		
+
 		<div>
-		<ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 				<sec:authorize access="isAnonymous()">
 					<li class="nav-item">
@@ -39,9 +39,9 @@
 				</sec:authorize>
 
 				<sec:authorize access="isAuthenticated()">
-					<li class="nav-item">
+					<span class="navbar-text">
 						<sec:authentication property="principal.username" />님 환영합니다.
-					</li>				
+					</span>
 					<li class="nav-item">
 						<a class="nav-link" href="/member/logout">로그아웃</a>
 					</li>
