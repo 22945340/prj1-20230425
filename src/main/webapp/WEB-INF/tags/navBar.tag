@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
+<sec:authentication property="name" var="username"/>
 
 <nav class="navbar navbar-expand-lg bg-dark mb-3 " data-bs-theme="dark">
 	<div class="container-lg">
@@ -40,7 +41,7 @@
 
 				<sec:authorize access="isAuthenticated()">
 					<span class="navbar-text">
-						<sec:authentication property="principal.username" />님 환영합니다.
+						${username }님 환영합니다
 					</span>
 					<li class="nav-item">
 						<a class="nav-link" href="/member/logout">로그아웃</a>
