@@ -130,10 +130,4 @@ public class BoardController {
 
 		// 4.
 	}
-	
-	@GetMapping("moveBoard")
-	public String moveBoard(String option) {
-		return "/id/" + service.moveBoard(option);
-		
-	}
 }

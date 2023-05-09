@@ -32,13 +32,7 @@
 						</c:if>
 					</sec:authorize>
 					<button type="button" class="btn btn-outline-success" onclick="location.href='/add'">글쓰기</button>
-					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/moveBoard?option=before&id=${board.id}'" style="float: right; margin: 0px 1px;">
-						<i class="fa-solid fa-caret-down"></i>
-					</button>
 					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/list'" style="float: right; margin: 0px 1px;">목록으로</button>
-					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/moveBoard?option=next&id=${board.id}'" style="float: right; margin: 0px 1px;">
-						<i class="fa-solid fa-caret-up"></i>
-					</button>
 				</div>
 				<div class="mb-3">
 					<label for="" class="form-label">제목</label>
