@@ -60,7 +60,7 @@
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</button>
 				</form> <br />
-				<button style="float:right" onclick="location.href='/add'" class="btn btn-outline-secondary">글쓰기</button>
+				<button style="float:right" onclick="location.href='/add'" class="btn btn-outline-success">글쓰기</button>
 			</div>
 
 		<table class="table">

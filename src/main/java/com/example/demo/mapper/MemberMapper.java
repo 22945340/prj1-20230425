@@ -26,10 +26,12 @@ public interface MemberMapper {
 
 	@Select("""
 			SELECT *
-			FROM Member
+			FROM Member m LEFT JOIN MemberAuthority ma
+			ON m.id = ma.memberId
 			WHERE 
 				id = #{id}
 			""")
+	@ResultMap("memberMap")
 	Member getMemberInfo(String id);
 
 	@Delete("""

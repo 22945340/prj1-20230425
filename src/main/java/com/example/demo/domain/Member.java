@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import java.time.*;
+import java.util.*;
 
 import lombok.*;
 
@@ -11,4 +12,6 @@ public class Member {
 	private String nickName;
 	private String email;
 	private LocalDateTime inserted;
+	
+	private List<String> authority;
 }

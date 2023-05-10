@@ -39,7 +39,8 @@
 						<input id="inputEmail" class="form-control" type="email" name="email" value="${member.email }" />
 					</div>
 
-					<button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" class="btn btn-primary">수정</button>
+					<button type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" class="btn btn-outline-primary">수정</button>
+					<a href="#" class="btn btn-outline-secondary" onclick="history.back()">취소</a>
 				</form>
 
 			</div>
@@ -58,8 +59,8 @@
 					<input form="modifyForm" id="inputOldPassword" type="text" name="oldPassword" class="form-control" />
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-danger" form="modifyForm">수정</button>
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+					<button type="submit" class="btn btn-outline-primary" form="modifyForm">수정</button>
+					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
 				</div>
 			</div>
 		</div>

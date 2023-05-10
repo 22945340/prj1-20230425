@@ -38,7 +38,7 @@
 						<input id="inputEmail" type="email" class="form-control" name="email" value="${member.email }" />
 					</div>
 					<div class="mb-3">
-						<input class="btn btn-primary" type="submit" value="가입" />
+						<input class="btn btn-outline-primary" type="submit" value="가입" />
 					</div>
 				</form>
 			</div>

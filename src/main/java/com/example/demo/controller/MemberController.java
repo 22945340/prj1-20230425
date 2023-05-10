@@ -10,6 +10,9 @@ import org.springframework.web.servlet.mvc.support.*;
 import com.example.demo.domain.*;
 import com.example.demo.service.*;
 
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+
 @Controller
 @RequestMapping("member")
 public class MemberController {
@@ -53,28 +56,32 @@ public class MemberController {
 	
 	// 경로 : /member/info?id=${member.id}
 	@GetMapping("info")
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated() and (authentication.name eq #id)")
 	public void memberInfo(String id, Model model) {
 		Member member = service.get(id);
 		model.addAttribute("member",member);
 	}
 	
 	@PostMapping("remove")
-	@PreAuthorize("isAuthenticated()")
-	public String remove(Member member, RedirectAttributes rttr) {
+	@PreAuthorize("isAuthenticated() and (authentication.name eq #member.id)")
+	public String remove(Member member, 
+			RedirectAttributes rttr,
+			HttpServletRequest request) throws Exception {
 		
 		boolean ok = service.remove(member);
 		if (ok) {
 			rttr.addFlashAttribute("message", "탈퇴 완료!!");
+			request.logout();
+			
 			return "redirect:/list";
 		} else {
-			rttr.addFlashAttribute("message", "비밀번호를 확인해 주세요");
+			rttr.addFlashAttribute("message", "비밀번호를 확인해 주세요");	
 			return "redirect:/member/info?id=" + member.getId();
 		}
 	}
 	
 	@GetMapping("modify")
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated() and (authentication.name eq #member.id)")
 	public void modify(Member member, Model model) {
 		member = service.get(member.getId());
 		model.addAttribute("member", member);
@@ -82,7 +89,7 @@ public class MemberController {
 	
 	
 	@PostMapping("modify")
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated() and (authentication.name eq #member.id)")
 	public String modifyProcess(Member member, RedirectAttributes rttr, String oldPassword) {
 		boolean ok = service.modify(member, oldPassword);
 		

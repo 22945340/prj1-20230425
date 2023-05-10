@@ -38,8 +38,8 @@
 					<input class="form-control" type="text" value="${member.email }" readonly />
 				</div>
 
-				<a href="/member/modify?id=${member.id }" class="btn btn-secondary">수정</a>
-				<button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">탈퇴</button>
+				<a href="/member/modify?id=${member.id }" class="btn btn-outline-primary">수정</a>
+				<button type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">탈퇴</button>
 
 			</div>
 		</div>
@@ -60,8 +60,8 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-danger" form="removeForm">탈퇴</button>
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+					<button type="submit" class="btn btn-outline-danger" form="removeForm">탈퇴</button>
+					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
 				</div>
 			</div>
 		</div>

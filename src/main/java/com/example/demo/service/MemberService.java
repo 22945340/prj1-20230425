@@ -20,6 +20,9 @@ public class MemberService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private BoardService boardService;
+	
 
 	public boolean signup(Member member) {
 		// 암호 암호화
@@ -46,14 +49,18 @@ public class MemberService {
 
 		if (passwordEncoder.matches(member.getPassword(), oldMember.getPassword())) {
 			// 암호가 일치하면?
-			mapper.deleteById(member);
+			
+			// 이 회원이 작성한 글 삭제
+			boardService.removeByWriter(member.getId());
+			
+			// 회원 테이블 삭제
 
-			return cnt == 0;
+			cnt = mapper.deleteById(member);
 
 		} else {
 			// 암호가 일치하지 않으면?
-			return cnt == 1;
 		}
+		return cnt == 1;
 
 	}
 

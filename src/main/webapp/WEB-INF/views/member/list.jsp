@@ -15,17 +15,17 @@
 
 	<div class="container-lg">
 		<div class="row justify-content-center">
-			<div class="col-12 col-md-8 col-lg-6">
+			<div class="col-16 col-md-10 col-lg-8">
 				<h1>회원 목록</h1>
-				<hr />
+				<hr style="width: 120%"/>
 				<!-- table.table>thead>tr>th*5^^tbody -->
 				<table class="table">
 					<thead>
 						<tr>
-							<th>아이디</th>
-							<th>패스워드</th>
-							<th>닉네임</th>
-							<th>이메일</th>
+							<th>ID</th>
+							<th>PW</th>
+							<th>Nickname</th>
+							<th>E-mail</th>
 							<th>가입일시</th>
 						</tr>
 					</thead>

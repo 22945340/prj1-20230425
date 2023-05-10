@@ -18,7 +18,7 @@
 				<li class="nav-item">
 					<a class="nav-link ${current eq 'list' ? 'active' : '' }" href="/list">자유 게시판</a>
 				</li>
-				<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="isAuthenticated() and ${username eq 'admin' }">
 					<li class="nav-item">
 						<a class="nav-link ${current eq 'memberList' ? 'active' : '' }" href="/member/list">회원목록</a>
 					</li>
@@ -41,6 +41,9 @@
 				<sec:authorize access="isAuthenticated()">
 					<li class="navbar-text" style="margin: 0px 5px"> ${username }님 </li>
 					<li class="nav-item" style="margin: 0px 5px">
+						<button class="btn btn-outline-secondary" onclick="location.href = '/member/info?id=${username }'">마이페이지</button>
+					</li>
+					<li class="nav-item" style="margin: 0px 5px">
 						<button class="btn btn-outline-secondary" onclick="location.href = '/member/logout'">로그아웃</button>
 					</li>
 				</sec:authorize>
@@ -48,6 +51,9 @@
 		</div>
 	</div>
 </nav>
+<div>
+<sec:authentication property="principal"/>
+</div>
 
 <c:url value="/list" var="pageLink">
 	<c:param name="page" value="${pageInfo.prevPageNumber }"></c:param>
