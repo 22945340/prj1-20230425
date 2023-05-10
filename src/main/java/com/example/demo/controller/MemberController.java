@@ -56,7 +56,7 @@ public class MemberController {
 	
 	// 경로 : /member/info?id=${member.id}
 	@GetMapping("info")
-	@PreAuthorize("isAuthenticated() and (authentication.name eq #id)")
+	@PreAuthorize("(isAuthenticated() and (authentication.name eq #id)) or hasAuthority('admin')")
 	public void memberInfo(String id, Model model) {
 		Member member = service.get(id);
 		model.addAttribute("member",member);
