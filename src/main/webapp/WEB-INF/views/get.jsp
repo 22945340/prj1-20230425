@@ -24,6 +24,7 @@
 				</h2>
 				<hr />
 				<div class="mb-3">
+				
 					<sec:authorize access="isAuthenticated()">
 						<sec:authentication property="name" var="userId" />
 						<c:if test="${userId eq board.writer }">
@@ -32,7 +33,9 @@
 						</c:if>
 					</sec:authorize>
 					<button type="button" class="btn btn-outline-success" onclick="location.href='/add'">글쓰기</button>
+					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/list'" style="float: right; margin: 0px 1px;">이전▽</button>
 					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/list'" style="float: right; margin: 0px 1px;">목록으로</button>
+					<button type="button" class="btn btn-outline-secondary" onclick="location.href='/list'" style="float: right; margin: 0px 1px;">다음△</button>
 				</div>
 				<div class="mb-3">
 					<label for="" class="form-label">제목</label>
