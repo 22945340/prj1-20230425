@@ -49,7 +49,7 @@ public class MemberController {
 	
 	
 	@GetMapping("list")
-	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("hasAuthority('admin')")
 	public void memberList(Member member, Model model) {
 		model.addAttribute("memberList", service.showMemberList(member));
 	}

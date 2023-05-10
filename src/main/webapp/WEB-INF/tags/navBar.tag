@@ -18,7 +18,7 @@
 				<li class="nav-item">
 					<a class="nav-link ${current eq 'list' ? 'active' : '' }" href="/list">자유 게시판</a>
 				</li>
-				<sec:authorize access="isAuthenticated() and ${username eq 'admin' }">
+				<sec:authorize access="hasAuthority('admin')">
 					<li class="nav-item">
 						<a class="nav-link ${current eq 'memberList' ? 'active' : '' }" href="/member/list">회원목록</a>
 					</li>
