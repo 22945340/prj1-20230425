@@ -44,14 +44,46 @@
 							패스워드 불일치!
 						</div>
 					</div>
+					
+					
 					<div class="mb-3">
-						<label class="form-label" for="inputNickName"> 별명 </label>
-						<input id="inputNickName" class="form-control" type="text" name="nickName" value="${member.nickName }" />
+						<label for="inputNickName" class="form-label">별명</label>
+						<div class="input-group">
+							<input id="inputNickName" type="text" class="form-control" name="nickName" value="${member.nickName }" />
+							<button class="btn btn-outline-secondary" type="button" id="checkNickNameBtn">중복확인</button>
+						</div>
+
+						<div class="d-none form-text text-primary" id="availableNickNameMessage">
+							<i class="fa-solid fa-check"></i>
+							사용 가능한 별명입니다.
+						</div>
+						<div class="d-none form-text text-danger" id="notAvailableNickNameMessage">
+							<i class="fa-solid fa-triangle-exclamation"></i>
+							사용 불가능한 별명입니다.
+						</div>
+
 					</div>
+					
+					
 					<div class="mb-3">
-						<label class="form-label" for="inputEmail"> 이메일 </label>
-						<input id="inputEmail" class="form-control" type="email" name="email" value="${member.email }" />
+						<label for="inputEmail" class="form-label">이메일</label>
+						<div class="input-group">
+							<input id="inputEmail" type="email" class="form-control" name="email" value="${member.email }" />
+							<button class="btn btn-outline-secondary" type="button" id="checkEmailBtn">중복확인</button>
+						</div>
+
+						<div class="d-none form-text text-primary" id="availableEmailMessage">
+							<i class="fa-solid fa-check"></i>
+							사용 가능한 이메일입니다.
+						</div>
+						<div class="d-none form-text text-danger" id="notAvailableEmailMessage">
+							<i class="fa-solid fa-triangle-exclamation"></i>
+							사용 불가능한 이메일입니다.
+						</div>
 					</div>
+					
+					
+					
 
 					<button id="modifySubmit" type="button" data-bs-toggle="modal" data-bs-target="#confirmModal" class="btn btn-outline-primary ">수정</button>
 					<a href="#" class="btn btn-outline-secondary" onclick="history.back()">취소</a>
