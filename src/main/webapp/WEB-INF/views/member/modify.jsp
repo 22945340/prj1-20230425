@@ -53,7 +53,7 @@
 							<button class="btn btn-outline-secondary" type="button" id="checkNickNameBtn">중복확인</button>
 						</div>
 
-						<div class="d-none form-text text-primary" id="availableNickNameMessage">
+						<div class="d-none form-text text-primary" id="availableNicknameMessage">
 							<i class="fa-solid fa-check"></i>
 							사용 가능한 별명입니다.
 						</div>
