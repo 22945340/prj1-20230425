@@ -7,7 +7,7 @@ function enableSubmit() {
 	if (checkId && checkEmail && checkNickName && checkPassword) {
 		$("#signupSubmit").removeAttr("disabled");
 	} else {
-		$("#signupSubmit").attr("disabled","");
+		$("#signupSubmit").attr("disabled", "");
 	}
 
 }
@@ -64,9 +64,9 @@ $("#checkIdBtn").click(function() {
 });
 
 // input 아이디에 키보드 입력 발생 시 
-$("#inputId").keyup(function(){
+$("#inputId").keyup(function() {
 	// 아이디 중복 확인 다시
-	checkId=false;
+	checkId = false;
 	$("#availableIdMessage").addClass("d-none");
 	$("#notAvailableIdMessage").addClass("d-none");
 	enableSubmit();
@@ -92,9 +92,9 @@ $("#checkNickNameBtn").click(function() {
 })
 
 
-$("#inputNickName").keyup(function(){
+$("#inputNickName").keyup(function() {
 	// 닉네임 중복 확인 다시
-	checkNickName=false;
+	checkNickName = false;
 	$("#availableNicknameMessage").addClass("d-none");
 	$("#notAvailableNickNameMessage").addClass("d-none");
 	enableSubmit();
@@ -103,32 +103,32 @@ $("#inputNickName").keyup(function(){
 
 // email 인풋에 키보드 입력 발생시
 $("#inputEmail").keyup(function() {
-        // 이메일 중복확인 다시
-        checkEmail = false;
-        $("#availableEmailMessage").addClass("d-none")
-        $("#notAvailableEmailMessage").addClass("d-none")
-        
-        // submit 버튼 비활성화
-        enableSubmit();
+	// 이메일 중복확인 다시
+	checkEmail = false;
+	$("#availableEmailMessage").addClass("d-none")
+	$("#notAvailableEmailMessage").addClass("d-none")
+
+	// submit 버튼 비활성화
+	enableSubmit();
 })
 
 
 // 이메일 중복확인 버튼이 클릭되면
 $("#checkEmailBtn").click(function() {
-        const email = $("#inputEmail").val();
-        $.ajax("/member/checkEmail/" + email, {
-                success: function(data) {
-                        
-                        if (data.available) {
-                                $("#availableEmailMessage").removeClass("d-none");
-                                $("#notAvailableEmailMessage").addClass("d-none");
-                                checkEmail = true;
-                        } else {
-                                $("#availableEmailMessage").addClass("d-none");
-                                $("#notAvailableEmailMessage").removeClass("d-none");
-                                checkEmail = false;
-                        }
-                },
-                complete: enableSubmit
-        });
+	const email = $("#inputEmail").val();
+	$.ajax("/member/checkEmail/" + email, {
+		success: function(data) {
+
+			if (data.available) {
+				$("#availableEmailMessage").removeClass("d-none");
+				$("#notAvailableEmailMessage").addClass("d-none");
+				checkEmail = true;
+			} else {
+				$("#availableEmailMessage").addClass("d-none");
+				$("#notAvailableEmailMessage").removeClass("d-none");
+				checkEmail = false;
+			}
+		},
+		complete: enableSubmit
+	});
 });
