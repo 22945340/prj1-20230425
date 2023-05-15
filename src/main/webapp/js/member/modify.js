@@ -131,3 +131,40 @@ $("#inputEmail").keyup(function() {
 
 })
 
+
+
+// 비밀번호 표시
+$("#showPassword").click(function() {
+	if ($("#inputPassword").attr("type") == "password") {
+		$("#inputPassword").attr("type", "text")
+		$("#showPassword").html(`<i class="fa-solid fa-eye"></i>`)
+	} else {
+		$("#inputPassword").attr("type", "password")
+		$("#showPassword").html(`<i class="fa-solid fa-eye-slash"></i>`)
+	}
+})
+
+$("#showPasswordCheck").click(function() {
+	if ($("#inputPasswordCheck").attr("type") == "password") {
+		$("#inputPasswordCheck").attr("type", "text")
+		$("#showPasswordCheck").html(`<i class="fa-solid fa-eye"></i>`)
+	} else {
+		$("#inputPasswordCheck").attr("type", "password")
+		$("#showPasswordCheck").html(`<i class="fa-solid fa-eye-slash"></i>`)
+	}
+})
+
+$("#showOldPassword").click(function() {
+	if ($("#inputOldPassword").attr("type") == "password") {
+		$("#inputOldPassword").attr("type", "text")
+		$("#showOldPassword").html(`<i class="fa-solid fa-eye"></i>`)
+	} else {
+		$("#inputOldPassword").attr("type", "password")
+		$("#showOldPassword").html(`<i class="fa-solid fa-eye-slash"></i>`)
+	}
+})
+
+
+
+
+

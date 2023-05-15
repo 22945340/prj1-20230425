@@ -30,7 +30,9 @@
 						<label class="form-label" for="inputPassword"> 패스워드 </label>
 						<div class="input-group">
 						<input id="inputPassword" class="form-control" type="password" name="password" value="" />
-						<button type="button" class = "btn btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i></button>
+						<button id="showPassword" type="button" class="btn btn-outline-secondary">
+								<i class="fa-solid fa-eye-slash"></i>
+						</button>
 						</div>
 						<div class="form-text">입력하지 않으면 기존 패스워드를 유지합니다.</div>
 					</div>
@@ -38,7 +40,9 @@
 						<label class="form-label" for="inputPasswordCheck"> 패스워드 확인 </label>
 						<div class="input-group">						
 						<input id="inputPasswordCheck" class="form-control" type="password" value="" />
-						<button type="button" class = "btn btn-outline-secondary"><i class="fa-solid fa-eye-slash"></i></button>
+						<button id="showPasswordCheck" type="button" class="btn btn-outline-secondary">
+								<i class="fa-solid fa-eye-slash"></i>
+						</button>	
 						</div>
 						<div id="passwordSuccessText" class="formtext text-primary d-none">
 							<i class="fa-solid fa-check"></i>
@@ -107,7 +111,12 @@
 				</div>
 				<div class="modal-body">
 					<label for="inputOldPassword">이전 암호</label>
-					<input form="modifyForm" id="inputOldPassword" type="text" name="oldPassword" class="form-control" />
+					<div class="input-group">
+					<input form="modifyForm" id="inputOldPassword" type="password" name="oldPassword" class="form-control" />
+					<button id="showOldPassword" type="button" class="btn btn-outline-secondary">
+								<i class="fa-solid fa-eye-slash"></i>
+						</button>	
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-outline-primary" form="modifyForm">수정</button>
