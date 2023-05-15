@@ -33,9 +33,14 @@ $("#checkNickNameBtn").click(function() {
 					$("#availableNicknameMessage").addClass("d-none");
 					$("#notAvailableNickNameMessage").removeClass("d-none");
 					checkNickName = false;
-					
 				}
 			}
 		}
 	})
+})
+
+
+$("#inputNickName").keyup(function(){
+	$("#availableNicknameMessage").addClass("d-none");
+	$("#notAvailableNickNameMessage").addClass("d-none");
 })
