@@ -38,6 +38,15 @@ public class MemberController {
 	public Map<String, Object> checkNickname(@PathVariable("nickname") String nickname){
 		return service.checkNickname(nickname);
 	}
+	
+	
+	@GetMapping("checkEmail/{email}")
+	@ResponseBody
+	public Map<String, Object> checkEmail(@PathVariable("email") String email) {
+		return service.checkEmail(email);
+	}
+	
+	
 
 	@GetMapping("signup")
 	@PreAuthorize("isAnonymous()")

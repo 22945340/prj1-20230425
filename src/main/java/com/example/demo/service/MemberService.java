@@ -93,12 +93,22 @@ public class MemberService {
 
 	public Map<String, Object> checkNickname(String nickname) {
 		Member member = mapper.selectByNickname(nickname);
-		System.out.println(member);
 		if(member != null) {
 			return Map.of("available", member == null, "id", member.getId());
 		} else {
 			return Map.of("available", member==null);
 		}
+	}
+
+	public Map<String, Object> checkEmail(String email) {
+		Member member = mapper.selectByEmail(email);
+		
+		if(member == null) {
+			return Map.of("available", member == null);
+		} else {
+			return Map.of("available", member == null, "id", member.getId());
+		}
+		
 	}
 
 }

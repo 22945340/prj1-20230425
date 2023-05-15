@@ -1,9 +1,10 @@
 let checkId = false;
+let checkEmail = false;
 let checkNickName = false;
 let checkPassword = false;
 
 function enableSubmit() {
-	if (checkId && checkNickName && checkPassword) {
+	if (checkId && checkEmail && checkNickName && checkPassword) {
 		$("#signupSubmit").removeAttr("disabled");
 	} else {
 		$("#signupSubmit").attr("disabled","");

@@ -75,11 +75,23 @@
 						</div>
 					</div>
 					
-					
 					<div class="mb-3">
 						<label for="inputEmail" class="form-label">이메일</label>
-						<input id="inputEmail" type="email" class="form-control" name="email" value="${member.email }" />
+						<div class="input-group">
+							<input id="inputEmail" type="email" class="form-control" name="email" value="${member.email }" />
+							<button class="btn btn-outline-secondary" type="button" id="checkEmailBtn">중복확인</button>
+						</div>
+
+						<div class="d-none form-text text-primary" id="availableEmailMessage">
+							<i class="fa-solid fa-check"></i>
+							사용 가능한 이메일입니다.
+						</div>
+						<div class="d-none form-text text-danger" id="notAvailableEmailMessage">
+							<i class="fa-solid fa-triangle-exclamation"></i>
+							사용 불가능한 이메일입니다.
+						</div>
 					</div>
+					
 					<div class="mb-3">
 						<input id="signupSubmit" class="btn btn-outline-primary" disabled type="submit" value="가입" />
 					</div>
