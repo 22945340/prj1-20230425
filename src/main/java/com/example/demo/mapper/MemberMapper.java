@@ -56,4 +56,10 @@ public interface MemberMapper {
 			""")
 	void update(Member member);
 
+	@Select("""
+			SELECT * FROM Member
+			WHERE nickName = #{nickname}
+			""")
+	Member selectByNickname(String nickname);
+
 }

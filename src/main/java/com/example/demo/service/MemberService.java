@@ -86,4 +86,14 @@ public class MemberService {
 		}
 	}
 
+	public Map<String, Object> checkId(String id) {
+		Member member = mapper.getMemberInfo(id);
+		return Map.of("available", member == null);
+	}
+
+	public Map<String, Object> checkNickname(String nickname) {
+		Member member = mapper.selectByNickname(nickname);
+		return Map.of("available", member == null);
+	}
+
 }

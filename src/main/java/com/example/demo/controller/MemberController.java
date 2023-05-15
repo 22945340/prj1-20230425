@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.access.prepost.*;
 import org.springframework.stereotype.*;
@@ -20,6 +22,22 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	
+	
+	
+	@GetMapping("checkId/{id}")
+	@ResponseBody
+	public Map<String, Object> checkId(@PathVariable("id") String id){
+		
+		return service.checkId(id);
+	}
+	
+	
+	@GetMapping("checkNickname/{nickname}")
+	@ResponseBody
+	public Map<String, Object> checkNickname(@PathVariable("nickname") String nickname){
+		return service.checkNickname(nickname);
+	}
 
 	@GetMapping("signup")
 	@PreAuthorize("isAnonymous()")
@@ -101,6 +119,8 @@ public class MemberController {
 			return "redirect:/member/info?id=" + member.getId();
 		}
 	}
+	
+	
 	
 	
 	
