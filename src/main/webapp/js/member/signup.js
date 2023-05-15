@@ -101,18 +101,6 @@ $("#inputNickName").keyup(function() {
 })
 
 
-// email 인풋에 키보드 입력 발생시
-$("#inputEmail").keyup(function() {
-	// 이메일 중복확인 다시
-	checkEmail = false;
-	$("#availableEmailMessage").addClass("d-none")
-	$("#notAvailableEmailMessage").addClass("d-none")
-
-	// submit 버튼 비활성화
-	enableSubmit();
-})
-
-
 // 이메일 중복확인 버튼이 클릭되면
 $("#checkEmailBtn").click(function() {
 	const email = $("#inputEmail").val();
@@ -132,3 +120,15 @@ $("#checkEmailBtn").click(function() {
 		complete: enableSubmit
 	});
 });
+
+
+// email 인풋에 키보드 입력 발생시
+$("#inputEmail").keyup(function() {
+	// 이메일 중복확인 다시
+	checkEmail = false;
+	$("#availableEmailMessage").addClass("d-none")
+	$("#notAvailableEmailMessage").addClass("d-none")
+
+	// submit 버튼 비활성화
+	enableSubmit();
+})

@@ -25,7 +25,10 @@
 					</div>
 					<div class="mb-3">
 						<label for="inputPassword" class="form-label" for="">비밀번호</label>
+						<div class="input-group">
 						<input id="inputPassword" class="form-control" type="password" name="password" />
+						<button type="button">비밀번호 표시</button>
+						</div>
 					</div>
 					<input class = "btn btn-outline-primary" type="submit" value="로그인" />
 				</form>

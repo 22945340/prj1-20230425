@@ -40,12 +40,17 @@
 					</div>
 					<div class="mb-3">
 						<label for="inputPassword" class="form-label">패스워드</label>
+						<div class="input-group">
 						<input id="inputPassword" type="password" class="form-control" name="password" />
+						<button type="button">비밀번호 표시</button>
+						</div>
 					</div>
 					<div class="mb-3">
 						<label for="inputPasswordCheck" class="form-label">패스워드 확인</label>
+						<div class="input-group">
 						<input id="inputPasswordCheck" type="password" class="form-control" />
-
+						<button type="button">비밀번호 표시</button>
+						</div>
 						<div id="passwordSuccessText" class="form-text text-primary d-none">
 							<i class="fa-solid fa-check"></i>
 							패스워드 일치!

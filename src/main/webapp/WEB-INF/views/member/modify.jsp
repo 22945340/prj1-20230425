@@ -28,13 +28,18 @@
 					</div>
 					<div class="mb-3">
 						<label class="form-label" for="inputPassword"> 패스워드 </label>
+						<div class="input-group">
 						<input id="inputPassword" class="form-control" type="password" name="password" value="" />
+						<button type="button">비밀번호 표시</button>
+						</div>
 						<div class="form-text">입력하지 않으면 기존 패스워드를 유지합니다.</div>
 					</div>
 					<div class="mb-3">
 						<label class="form-label" for="inputPasswordCheck"> 패스워드 확인 </label>
+						<div class="input-group">						
 						<input id="inputPasswordCheck" class="form-control" type="password" value="" />
-						
+						<button type="button">비밀번호 표시</button>
+						</div>
 						<div id="passwordSuccessText" class="formtext text-primary d-none">
 							<i class="fa-solid fa-check"></i>
 							패스워드 일치!

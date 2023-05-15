@@ -7,7 +7,7 @@ function enableSubmit() {
 	if (checkId && checkEmail && checkNickName && checkPassword) {
 		$("#modifySubmit").removeAttr("disabled");
 	} else {
-		$("#modifySubmit").attr("disabled","");
+		$("#modifySubmit").attr("disabled", "");
 	}
 
 }
@@ -46,23 +46,37 @@ $("#checkNickNameBtn").click(function() {
 					$("#availableNicknameMessage").removeClass("d-none");
 					$("#notAvailableNickNameMessage").addClass("d-none");
 					checkNickName = true;
-				} else{
+				} else {
 					$("#availableNicknameMessage").addClass("d-none");
 					$("#notAvailableNickNameMessage").removeClass("d-none");
 					checkNickName = false;
 				}
 			}
 		},
-		complete : enableSubmit
+		complete: enableSubmit
 	})
 })
 
 
-$("#inputNickName").keyup(function(){
-	checkNickName=false;
-	$("#availableNicknameMessage").addClass("d-none");
-	$("#notAvailableNickNameMessage").addClass("d-none");
-	enableSubmit();
+$("#inputNickName").keyup(function() {
+	const userId = $("#inputId").val();
+	const userNickName = $("#inputNickName").val();
+	$.ajax("/member/checkNickname/" + userNickName, {
+		success: function(data) {
+
+			if (data.id == userId) {
+				checkNickName = true;
+				$("#availableNicknameMessage").addClass("d-none");
+				$("#notAvailableNickNameMessage").addClass("d-none");
+			} else {
+				checkNickName = false;
+				$("#availableNicknameMessage").addClass("d-none");
+				$("#notAvailableNickNameMessage").addClass("d-none");
+			}
+
+		},
+		complete: enableSubmit
+	})
 })
 
 
@@ -81,23 +95,39 @@ $("#checkEmailBtn").click(function() {
 			} else {
 				if (data.id == userId) {
 					$("#availableEmailMessage").removeClass("d-none");
-				$("#notAvailableEmailMessage").addClass("d-none");
-				checkEmail = true;
-				} else{
+					$("#notAvailableEmailMessage").addClass("d-none");
+					checkEmail = true;
+				} else {
 					$("#availableEmailMessage").addClass("d-none");
-				$("#notAvailableEmailMessage").removeClass("d-none");
-				checkEmail = false;
+					$("#notAvailableEmailMessage").removeClass("d-none");
+					checkEmail = false;
 				}
 			}
 		},
-		complete : enableSubmit
+		complete: enableSubmit
 	})
 })
 
 
-$("#inputEmail").keyup(function(){
-	checkEmail = false;
-	$("#availableEmailMessage").addClass("d-none")
-	$("#notAvailableEmailMessage").addClass("d-none")
-	enableSubmit();
+$("#inputEmail").keyup(function() {
+	const userId = $("#inputId").val();
+	const userEmail = $("#inputEmail").val();
+	$.ajax("/member/checkEmail/" + userEmail, {
+		success: function(data) {
+			if (data.id == userId) {
+				checkEmail = true;
+				$("#availableEmailMessage").addClass("d-none")
+				$("#notAvailableEmailMessage").addClass("d-none")
+			} else {
+				checkEmail = false;
+				$("#availableEmailMessage").addClass("d-none")
+				$("#notAvailableEmailMessage").addClass("d-none")
+			}
+
+		},
+		complete: enableSubmit
+
+	})
+
 })
+
