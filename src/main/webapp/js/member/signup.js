@@ -154,3 +154,21 @@ $("#showPasswordCheck").click(function() {
 		$("#showPasswordCheck").html(`<i class="fa-solid fa-eye-slash"></i>`)
 	}
 })
+
+// 비밀번호 CapsLock 체크
+
+document.querySelector("#inputPassword").addEventListener('keyup',function(event){
+	if(event.getModifierState('CapsLock')){
+		$("#passwordCapsLockCheck").removeClass("d-none")
+	} else{
+		$("#passwordCapsLockCheck").addClass("d-none")
+	}
+})
+
+document.querySelector("#inputPasswordCheck").addEventListener('keyup',function(event){
+	if(event.getModifierState('CapsLock')){
+		$("#passwordCheckCapsLockCheck").removeClass("d-none")
+	} else{
+		$("#passwordCheckCapsLockCheck").addClass("d-none")
+	}
+})

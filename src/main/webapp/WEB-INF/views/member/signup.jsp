@@ -45,8 +45,12 @@
 						<button id="showPassword" type="button" class="btn btn-outline-secondary">
 								<i class="fa-solid fa-eye-slash"></i>
 						</button>
-							
 						</div>
+						<div class="d-none form-text text-warning" id="passwordCapsLockCheck">
+							<i class="fa-solid fa-triangle-exclamation"></i>
+							CapsLock이 켜져있습니다
+						</div>
+							
 					</div>
 					<div class="mb-3">
 						<label for="inputPasswordCheck" class="form-label">패스워드 확인</label>
@@ -55,6 +59,10 @@
 						<button id="showPasswordCheck" type="button" class="btn btn-outline-secondary">
 								<i class="fa-solid fa-eye-slash"></i>
 						</button>	
+						</div>
+						<div class="d-none form-text text-warning" id="passwordCheckCapsLockCheck">
+							<i class="fa-solid fa-triangle-exclamation"></i>
+							CapsLock이 켜져있습니다
 						</div>
 						<div id="passwordSuccessText" class="form-text text-primary d-none">
 							<i class="fa-solid fa-check"></i>

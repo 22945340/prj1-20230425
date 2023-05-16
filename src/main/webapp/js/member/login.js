@@ -12,6 +12,10 @@ $("#showPassword").click(function() {
 // caps lock 표시
 
 document.querySelector("#inputPassword").addEventListener('keyup',function(event){
-	event.getModifierState('CapsLock')
+	if(event.getModifierState('CapsLock')){
+		$("#capsLockCheck").removeClass("d-none")
+	} else{
+		$("#capsLockCheck").addClass("d-none")
+	}
 })
 
