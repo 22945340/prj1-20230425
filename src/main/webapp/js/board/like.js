@@ -18,6 +18,8 @@ $("#likeIcon").click(function() {
 			} else {
 				$("#likeIcon").html(`<i class="fa-regular fa-heart"></i>`);
 			}
+			
+			$("#likeNumber").text(data.count);
 		},
 		error: function(jqXHR){
 			// console.log("좋아요를 누르기 전에 로그인 해 주세요");
