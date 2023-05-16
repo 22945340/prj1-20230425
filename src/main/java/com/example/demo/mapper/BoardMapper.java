@@ -61,8 +61,13 @@ public interface BoardMapper {
 				b.body,
 				b.inserted,
 				b.writer,
-				f.fileName
-			FROM Board b LEFT JOIN FileName f ON b.id=f.boardId
+				f.fileName,
+				(SELECT COUNT(*)
+				 FROM BoardLike
+				 WHERE boardId = b.id) likeCount
+				
+			FROM Board b LEFT JOIN FileName f ON b.id=f.boardId 
+						LEFT JOIN BoardLike bl ON b.id = bl.boardId
 			WHERE b.id = #{id}
 			""")
 	@ResultMap("boardResultMap")
