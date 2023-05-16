@@ -137,6 +137,9 @@ public class BoardService {
 	}
 
 	public boolean remove(Integer id) {
+		// 좋아요 테이블 삭제
+		likeMapper.deleteByBoardId(id);		
+		
 		// 파일명 조회
 		List<String> fileNames = mapper.selectFileNamesByBoardId(id);
 		
