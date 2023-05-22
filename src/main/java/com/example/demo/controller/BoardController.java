@@ -123,7 +123,7 @@ public class BoardController {
 
 		// 3.
 		if (ok) {
-			;
+			
 			rttr.addFlashAttribute("message", board.getId() + "번 게시물이 등록되었습니다.");
 			return "redirect:/id/" + board.getId();
 		} else {
