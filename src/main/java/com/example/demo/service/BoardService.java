@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.*;
 import org.springframework.web.multipart.*;
 
 import com.example.demo.domain.*;
-import com.example.demo.mapper.*;import software.amazon.awssdk.core.sync.*;
+import com.example.demo.mapper.*;
+
+import software.amazon.awssdk.core.sync.*;
 import software.amazon.awssdk.services.s3.*;
 import software.amazon.awssdk.services.s3.model.*;
 
@@ -25,6 +27,9 @@ public class BoardService {
 	
 	@Autowired
 	private BoardLikeMapper likeMapper;
+	
+	@Autowired
+	private commentMapper commentMapper;
 	
 	@Value("${aws.s3.bucketName}")
 	private String bucketName;
@@ -137,6 +142,10 @@ public class BoardService {
 	}
 
 	public boolean remove(Integer id) {
+		
+		// 댓글 테이블 삭제
+		commentMapper.deleteByBoardId(id);
+		
 		// 좋아요 테이블 삭제
 		likeMapper.deleteByBoardId(id);		
 		
